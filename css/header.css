@@ -1,0 +1,67 @@
+/* Header responsive improvements */
+
+/* Mobile menu base (hidden by default, revealed via .open) */
+#mobileMenu {
+  display: none;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+  border-radius: 6px;
+  transition: max-height .28s ease, opacity .2s ease;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+}
+#mobileMenu.open {
+  display: block;
+  max-height: 1000px; /* suficiente para el contenido */
+  opacity: 1;
+}
+
+/* Nav links as full-width touch targets on mobile */
+.nav-link {
+  padding: 0.5rem 1rem;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Buttons and inputs inside mobile menu */
+#mobileMenu .btn {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+#mobileMenu input.form-control {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* Logo scaling */
+header img {
+  height: 40px;
+  width: auto;
+  max-width: 100%;
+}
+
+/* Breakpoints: small phones */
+@media (max-width: 480px) {
+  header img { height: 32px; }
+  .container { padding-left: 12px; padding-right: 12px; }
+  .nav-link { padding: 0.5rem 0.75rem; font-size: 0.95rem; }
+  #mobileMenu { padding: 0.75rem; }
+}
+
+/* Tablet and up: ensure mobile menu is hidden, desktop nav inline */
+@media (min-width: 768px) {
+  #mobileMenu { display: none !important; max-height: none; opacity: 1; }
+  header img { height: 48px; }
+  .nav-link { display: inline-block; padding: 0.5rem 1rem; }
+}
+
+/* Minor accessibility focus outlines */
+.nav-link:focus, .btn:focus, #menuToggle:focus { outline: 2px solid rgba(0,123,255,0.25); outline-offset: 2px; }
+
+/* Utility: reduce spacing on very large screens */
+@media (min-width: 1200px) {
+  .container { max-width: 1140px; }
+}
