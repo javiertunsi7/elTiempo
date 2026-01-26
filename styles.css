@@ -1,0 +1,44 @@
+@media (max-width: 640px) {
+    body {
+        padding: 0.75rem;
+    }
+    
+    .container {
+        padding: 0;
+    }
+    
+    .logo-header {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+
+@media (hover: none) and (pointer: coarse) {
+    .locationBtn {
+        min-height: 48px;
+    }
+}
+
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+
+footer {
+    transition: transform 0.3s ease;
+}
+
+footer:hover {
+    transform: translateY(-2px);
+}
