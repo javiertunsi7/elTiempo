@@ -251,3 +251,19 @@ fetchWeatherData(currentLat, currentLon);
 setInterval(() => {
     fetchWeatherData(currentLat, currentLon);
 }, 600000);
+// Ejemplo de manejo mejorado de errores
+try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    if (!data.current) throw new Error('Datos incompletos de la API');
+    displayWeather(data);
+} catch (error) {
+    document.getElementById('weatherContent').innerHTML = `
+        <div class="text-center py-10">
+            <p class="text-base sm:text-lg">❌ Error al cargar los datos del clima</p>
+            <p class="text-xs sm:text-sm mt-2">Por favor, inténtalo de nuevo más tarde</p>
+        </div>
+    `;
+    console.error('Error fetching weather data:', error);
+}
