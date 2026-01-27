@@ -214,3 +214,28 @@ async function useManualLocation() {
         }
     }
 }
+function displaySearchHistory() {
+    const historyContainer = document.getElementById('searchHistory');
+    
+    if (searchHistory.length === 0) {
+        historyContainer.innerHTML = '';
+        return;
+    }
+    
+    let html = '<div class="mt-5">';
+    html += '<div class="text-xs sm:text-sm opacity-80 mb-2 font-bold">📜 Búsquedas recientes:</div>';
+    html += '<div class="historyScroll flex gap-2 overflow-x-auto py-2">';
+    
+    searchHistory.forEach(location => {
+        html += `
+            <div class="bg-white/20 border border-white/30 rounded-2xl px-3 sm:px-4 py-2 sm:py-3 min-w-[120px] sm:min-w-[140px] cursor-pointer transition-all hover:bg-white/35" 
+                 onclick="loadFromHistory(${location.lat}, ${location.lon}, '${location.name}', '${location.country}', '${location.admin1}')">
+                <div class="font-bold text-xs sm:text-sm">${location.name}</div>
+                <div class="text-[10px] sm:text-xs opacity-80">${location.country}</div>
+            </div>
+        `;
+    });
+    
+    html += '</div></div>';
+    historyContainer.innerHTML = html;
+}
