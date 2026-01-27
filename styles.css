@@ -1,3 +1,4 @@
+/* ===== VARIABLES DE DISEÑO ===== */
 :root {
     --white-15: rgba(255, 255, 255, 0.15);
     --white-20: rgba(255, 255, 255, 0.20);
@@ -5,42 +6,78 @@
     --blue-500: #3b82f6;
     --text-light: rgba(255, 255, 255, 0.95);
     --text-muted: rgba(255, 255, 255, 0.7);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
+
+/* ===== TARJETA DE UBICACIÓN ===== */
 .location-card {
     background-color: var(--white-15);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 1.5rem;
     padding: 1rem;
+    margin-bottom: 1.5rem;
     border: 1px solid var(--white-20);
+    box-shadow: var(--shadow-md);
+}
+
+/* Animación de entrada */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.location-card {
     animation: slideDown 0.5s ease-out;
 }
 
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+/* ===== ENCABEZADO ===== */
 .location-header {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     margin-bottom: 1rem;
+    flex-wrap: wrap;
 }
 
 .location-title {
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-light);
+    word-break: break-word;
 }
 
 @media (min-width: 640px) {
-    .location-title { font-size: 1.125rem; }
+    .location-title {
+        font-size: 1.125rem;
+    }
 }
+
+@media (min-width: 768px) {
+    .location-title {
+        font-size: 1.25rem;
+    }
+}
+
+/* ===== BOTONES ===== */
 .location-buttons {
     display: flex;
     gap: 0.5rem;
     margin-bottom: 1rem;
     flex-direction: column;
+}
+
+@media (min-width: 640px) {
+    .location-buttons {
+        flex-direction: row;
+    }
 }
 
 .location-btn {
@@ -49,11 +86,37 @@
     border: none;
     padding: 0.75rem;
     border-radius: 9999px;
+    cursor: pointer;
+    font-weight: 500;
     transition: all 0.2s ease;
+    text-align: center;
 }
 
-.location-btn:hover { transform: scale(1.05); }
-.location-btn:active { transform: scale(0.95); }
+.primary-btn {
+    background: linear-gradient(to right, var(--cyan-400), var(--blue-500));
+    color: white;
+    font-size: 0.875rem;
+}
+
+@media (min-width: 640px) {
+    .primary-btn {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Efectos hover y active */
+.location-btn:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+.location-btn:active {
+    transform: scale(0.95);
+}
+
+/* ===== ESTADO DE UBICACIÓN ===== */
 .location-status {
     margin-top: 0.5rem;
     font-size: 0.75rem;
@@ -61,13 +124,25 @@
 }
 
 @media (min-width: 640px) {
-    .location-status { font-size: 0.875rem; }
+    .location-status {
+        font-size: 0.875rem;
+    }
 }
+
+@media (min-width: 768px) {
+    .location-status {
+        font-size: 1rem;
+    }
+}
+
+/* ===== HISTORIAL DE BÚSQUEDA ===== */
 .search-history {
     margin-top: 1rem;
     padding-top: 1rem;
     border-top: 1px solid var(--white-20);
 }
+
+/* ===== CONTENIDO DEL CLIMA ===== */
 .weather-content {
     text-align: center;
     font-size: 1.125rem;
@@ -75,23 +150,44 @@
     color: var(--text-light);
 }
 
+@media (min-width: 640px) {
+    .weather-content {
+        font-size: 1.25rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .weather-content {
+        font-size: 1.5rem;
+    }
+}
+
+/* ===== ESTADOS ADICIONALES ===== */
+/* Estado de carga */
 .weather-content:empty::before {
     content: "Cargando datos meteorológicos...";
     opacity: 0.7;
 }
+
+/* Estado de error */
 .error-state {
     background: linear-gradient(to right, #ef4444, #dc2626);
     color: white;
     padding: 1rem;
     border-radius: 0.75rem;
+    margin-top: 1rem;
 }
 
+/* Estado exitoso */
 .success-state {
     background: linear-gradient(to right, #10b981, #059669);
     color: white;
     padding: 1rem;
     border-radius: 0.75rem;
+    margin-top: 1rem;
 }
+
+/* Responsividad adicional */
 @media (max-width: 380px) {
     .location-btn {
         min-width: 120px;
