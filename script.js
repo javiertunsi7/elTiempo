@@ -51,3 +51,17 @@ async function searchCity(cityName) {
         return null;
     }
 }
+function showCitySelector(cities) {
+    let html = '<div class="bg-white/20 p-4 sm:p-5 rounded-2xl mt-4">';
+    html += '<p class="mb-4 font-bold text-sm sm:text-base">Se encontraron varias ubicaciones. Selecciona una:</p>';
+    
+    cities.forEach((city) => {
+        const displayName = `${city.name}, ${city.admin1 ? city.admin1 + ', ' : ''}${city.country}`;
+        html += `<button class="locationBtn" onclick="selectCity(${city.latitude}, ${city.longitude}, '${city.name}', '${city.country}', '${city.admin1}')">
+            📍 ${displayName}
+        </button>`;
+    });
+    
+    html += '</div>';
+    document.getElementById('locationStatus').innerHTML = html;
+}
