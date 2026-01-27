@@ -75,3 +75,14 @@ function selectCity(lat, lon, name, country, admin1) {
     addToHistory(lat, lon, name, country, admin1);
     fetchWeatherData(currentLat, currentLon);
 }
+async function fetchWeatherData(lat, lon) {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&hourly=temperature_2m,precipitation_probability,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max&timezone=auto`;
+    
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        displayWeather(data);
+    } catch (error) {
+        // Manejo de errores
+    }
+}
