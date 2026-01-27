@@ -34,3 +34,20 @@ function getWeatherIcon(code, isDay = true) {
     };
     return iconMap[code] || '🌡️';
 }
+async function searchCity(cityName) {
+    const geocodingUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityName)}&count=10&language=es&format=json`;
+    
+    try {
+        const response = await fetch(geocodingUrl);
+        const data = await response.json();
+        
+        if (data.results && data.results.length > 0) {
+            return data.results;
+        } else {
+            return null;
+        }
+    } catch (error) {
+        console.error('Error searching city:', error);
+        return null;
+    }
+}
