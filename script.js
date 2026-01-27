@@ -115,3 +115,27 @@ html += `
         </div>
         <div class="text-5xl sm:text-6xl md:text-8xl drop-shadow-lg">${getWeatherIcon(current.weather_code)}</div>
     </div>`;
+    html += `
+    <div class="bg-white/15 backdrop-blur-md rounded-3xl p-4 sm:p-6 md:p-8 mb-6 border border-white/20 animate-slideUp">
+        <div class="flex justify-between items-center mb-5 flex-wrap gap-2">
+            <span class="text-lg sm:text-xl md:text-2xl font-semibold">⏰ PRÓXIMAS HORAS</span>
+            <span class="text-xs sm:text-sm md:text-base opacity-80">Pronóstico 12h</span>
+        </div>
+        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 sm:gap-3 mt-5">`;
+
+for (let i = 0; i < 12; i++) {
+    const hourIndex = currentHour + i;
+    if (hourIndex < 24) {
+        const temp = Math.round(hourly.temperature_2m[hourIndex]);
+        const time = `${String(hourIndex).padStart(2, '0')}:00`;
+        
+        html += `
+            <div class="bg-white/20 rounded-2xl p-2 sm:p-3 text-center transition-all hover:-translate-y-1">
+                <div class="font-bold mb-1 sm:mb-2 text-xs sm:text-sm md:text-base">${time}</div>
+                <div class="text-2xl sm:text-3xl md:text-4xl my-1 sm:my-2">${getWeatherIcon(hourly.weather_code[hourIndex])}</div>
+                <div class="text-lg sm:text-xl md:text-2xl my-1 sm:my-2">${temp}°</div>
+            </div>`;
+    }
+}
+
+html += `</div></div>`;
