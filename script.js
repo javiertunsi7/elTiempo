@@ -65,3 +65,13 @@ function showCitySelector(cities) {
     html += '</div>';
     document.getElementById('locationStatus').innerHTML = html;
 }
+function selectCity(lat, lon, name, country, admin1) {
+    currentLat = lat;
+    currentLon = lon;
+    const displayName = `${name}, ${admin1 ? admin1 + ', ' : ''}${country}`;
+    document.getElementById('locationName').textContent = displayName;
+    document.getElementById('locationStatus').innerHTML = '✅ Ubicación establecida';
+    
+    addToHistory(lat, lon, name, country, admin1);
+    fetchWeatherData(currentLat, currentLon);
+}
