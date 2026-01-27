@@ -1,40 +1,14 @@
-
+<!-- Estructura mínima inicial -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Clima - Pronóstico en Vivo</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles.css">
+    <title>El Clima</title>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-purple-500 via-purple-600 to-purple-800 p-4 text-white"></body>
-
-<div id="locationCard" class="location-card">
-    <div class="location-header">
-        <h3 class="location-title">
-            📍 <span id="locationName">Cargando ubicación...</span>
-        </h3>
-    </div>
-    
-    <div class="location-buttons">
-        <button class="location-btn primary-btn" onclick="getLocation()">
-            Usar mi ubicación
-        </button>
-        <button class="location-btn primary-btn" onclick="useManualLocation()">
-            Introducir ubicación
-        </button>
-    </div>
-    
-    <p id="locationStatus" class="location-status"></p>
-    <div id="searchHistory" class="search-history"></div>
-</div>
-
-<div id="weatherContent" class="weather-content">
-    Cargando datos meteorológicos...
-</div>
-
-
-    <script src="script.js"></script>
+<body>
 </body>
 </html>
+<!-- Añadir Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<body class="min-h-screen bg-gradient-to-br from-purple-500 via-purple-600 to-purple-800 p-4 text-white">
