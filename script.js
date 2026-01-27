@@ -24,3 +24,13 @@ function saveSearchHistory() {
         console.error('Error saving search history:', error);
     }
 }
+function getWeatherIcon(code, isDay = true) {
+    const iconMap = {
+        0: '☀️',   // Clear sky
+        1: '🌤️',  // Mainly clear
+        2: '⛅',   // Partly cloudy
+        3: '☁️',   // Overcast
+        // ... más códigos
+    };
+    return iconMap[code] || '🌡️';
+}
