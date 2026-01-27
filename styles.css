@@ -20,3 +20,19 @@
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+.location-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.location-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+@media (min-width: 640px) {
+    .location-title { font-size: 1.125rem; }
+}
