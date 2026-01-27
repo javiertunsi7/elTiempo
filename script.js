@@ -167,3 +167,26 @@ for (let i = 0; i < 7; i++) {
 }
 
 html += '</div>';
+function getLocation() {
+    if (navigator.geolocation) {
+        document.getElementById('locationStatus').textContent = 'Obteniendo ubicación...';
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                currentLat = position.coords.latitude;
+                currentLon = position.coords.longitude;
+                document.getElementById('locationName').textContent = 'Tu ubicación';
+                document.getElementById('locationStatus').textContent = '✅ Ubicación detectada';
+                fetchWeatherData(currentLat, currentLon);
+            },
+            (error) => {
+                let errorMessage = '❌ No se pudo obtener la ubicación.';
+                if (error.code === error.PERMISSION_DENIED) {
+                    errorMessage += ' Activa los permisos de ubicación en tu navegador.';
+                }
+                document.getElementById('locationStatus').textContent = errorMessage;
+            }
+        );
+    } else {
+        document.getElementById('locationStatus').textContent = '❌ Geolocalización no disponible en este navegador';
+    }
+}
