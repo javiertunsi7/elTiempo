@@ -63,3 +63,8 @@
 @media (min-width: 640px) {
     .location-status { font-size: 0.875rem; }
 }
+.search-history {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--white-20);
+}
