@@ -86,3 +86,18 @@ async function fetchWeatherData(lat, lon) {
         // Manejo de errores
     }
 }
+function displayWeather(data) {
+    const current = data.current;
+    const hourly = data.hourly;
+    const daily = data.daily;
+
+    let html = `
+        <div class="bg-white/20 backdrop-blur-lg rounded-3xl p-4 sm:p-6 md:p-10 mb-8">
+            <div class="flex-1 min-w-[180px] sm:min-w-[200px]">
+                <div class="opacity-90 mb-2 text-sm sm:text-base">AHORA</div>
+                <div class="text-4xl sm:text-5xl md:text-7xl font-bold">${Math.round(current.temperature_2m)}°C</div>
+            </div>
+        </div>`;
+    
+    document.getElementById('weatherContent').innerHTML = html;
+}
