@@ -101,3 +101,17 @@ function displayWeather(data) {
     
     document.getElementById('weatherContent').innerHTML = html;
 }
+// Dentro de displayWeather()
+html += `
+    <div class="bg-white/20 backdrop-blur-lg rounded-3xl p-4 sm:p-6 md:p-10 mb-8 flex justify-between items-center gap-4 sm:gap-5 border border-white/30 animate-fadeIn flex-wrap">
+        <div class="flex-1 min-w-[180px] sm:min-w-[200px]">
+            <div class="opacity-90 mb-2 text-sm sm:text-base">AHORA</div>
+            <div class="text-4xl sm:text-5xl md:text-7xl font-bold drop-shadow-lg">${Math.round(current.temperature_2m)}°C</div>
+            <div class="text-lg sm:text-xl md:text-2xl mt-2">${getWeatherDescription(current.weather_code)}</div>
+            <div class="mt-4 flex flex-wrap gap-2">
+                <span class="inline-block bg-white/20 px-2 sm:px-3 py-1 sm:py-2 rounded-2xl text-xs sm:text-sm">💨 Viento ${Math.round(current.wind_speed_10m)} km/h</span>
+                <span class="inline-block bg-white/20 px-2 sm:px-3 py-1 sm:py-2 rounded-2xl text-xs sm:text-sm">💧 Humedad ${current.relative_humidity_2m}%</span>
+            </div>
+        </div>
+        <div class="text-5xl sm:text-6xl md:text-8xl drop-shadow-lg">${getWeatherIcon(current.weather_code)}</div>
+    </div>`;
