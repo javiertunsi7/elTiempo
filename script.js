@@ -242,3 +242,12 @@ function displaySearchHistory() {
 function loadFromHistory(lat, lon, name, country, admin1) {
     selectCity(lat, lon, name, country, admin1);
 }
+// Initialize application
+document.getElementById('locationName').textContent = 'Orihuela, Valencia, España';
+loadSearchHistory();
+fetchWeatherData(currentLat, currentLon);
+
+// Auto-update weather data every 10 minutes
+setInterval(() => {
+    fetchWeatherData(currentLat, currentLon);
+}, 600000);
