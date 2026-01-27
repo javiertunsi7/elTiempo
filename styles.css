@@ -36,3 +36,21 @@
 @media (min-width: 640px) {
     .location-title { font-size: 1.125rem; }
 }
+.location-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-direction: column;
+}
+
+.location-btn {
+    flex: 1;
+    min-width: 150px;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 9999px;
+    transition: all 0.2s ease;
+}
+
+.location-btn:hover { transform: scale(1.05); }
+.location-btn:active { transform: scale(0.95); }
