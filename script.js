@@ -239,3 +239,6 @@ function displaySearchHistory() {
     html += '</div></div>';
     historyContainer.innerHTML = html;
 }
+function loadFromHistory(lat, lon, name, country, admin1) {
+    selectCity(lat, lon, name, country, admin1);
+}
