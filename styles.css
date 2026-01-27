@@ -68,3 +68,14 @@
     padding-top: 1rem;
     border-top: 1px solid var(--white-20);
 }
+.weather-content {
+    text-align: center;
+    font-size: 1.125rem;
+    padding: 2.5rem 0;
+    color: var(--text-light);
+}
+
+.weather-content:empty::before {
+    content: "Cargando datos meteorológicos...";
+    opacity: 0.7;
+}
