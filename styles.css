@@ -7,3 +7,16 @@
     --text-muted: rgba(255, 255, 255, 0.7);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
+.location-card {
+    background-color: var(--white-15);
+    backdrop-filter: blur(12px);
+    border-radius: 1.5rem;
+    padding: 1rem;
+    border: 1px solid var(--white-20);
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
