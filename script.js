@@ -139,3 +139,31 @@ for (let i = 0; i < 12; i++) {
 }
 
 html += `</div></div>`;
+html += `
+    <div class="bg-white/15 backdrop-blur-md rounded-3xl p-4 sm:p-6 md:p-8 border border-white/20 animate-slideUpDelay">
+        <div class="flex justify-between items-center mb-5 flex-wrap gap-2">
+            <span class="text-lg sm:text-xl md:text-2xl font-semibold">📅 PRÓXIMOS DÍAS</span>
+            <span class="text-xs sm:text-sm md:text-base opacity-80">Resumen semanal</span>
+        </div>`;
+
+const dayNames = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+
+for (let i = 0; i < 7; i++) {
+    const date = new Date(daily.time[i]);
+    const dayName = i === 0 ? 'Hoy' : dayNames[date.getDay()];
+    const dayDate = date.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' });
+
+    html += `
+        <div class="bg-white/20 rounded-2xl p-3 sm:p-4 md:p-5 mb-3 sm:mb-4 flex justify-between items-center gap-3 sm:gap-4 transition-all hover:translate-x-2">
+            <div class="flex-1 min-w-[100px] sm:min-w-[120px]">
+                <div class="font-bold text-sm sm:text-base md:text-lg mb-1">${dayName}, ${dayDate}</div>
+            </div>
+            <div class="text-3xl sm:text-4xl md:text-5xl">${getWeatherIcon(daily.weather_code[i])}</div>
+            <div class="flex gap-2 sm:gap-3 md:gap-5 items-center flex-wrap">
+                <span class="text-lg sm:text-xl md:text-2xl font-bold">${Math.round(daily.temperature_2m_max[i])}°</span>
+                <span class="text-base sm:text-lg md:text-xl opacity-80">${Math.round(daily.temperature_2m_min[i])}°</span>
+            </div>
+        </div>`;
+}
+
+html += '</div>';
