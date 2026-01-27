@@ -54,3 +54,12 @@
 
 .location-btn:hover { transform: scale(1.05); }
 .location-btn:active { transform: scale(0.95); }
+.location-status {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+@media (min-width: 640px) {
+    .location-status { font-size: 0.875rem; }
+}
