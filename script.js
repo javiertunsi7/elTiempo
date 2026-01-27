@@ -190,3 +190,27 @@ function getLocation() {
         document.getElementById('locationStatus').textContent = '❌ Geolocalización no disponible en este navegador';
     }
 }
+async function useManualLocation() {
+    const city = prompt('Introduce el nombre de la ciudad, pueblo o provincia:\n\nEjemplos:\n- Madrid\n- Barcelona\n- Nueva York\n- París\n- Tokio');
+    
+    if (city && city.trim() !== '') {
+        document.getElementById('locationStatus').innerHTML = '🔍 Buscando ubicación...';
+        const results = await searchCity(city.trim());
+        
+        if (results && results.length > 0) {
+            if (results.length === 1) {
+                const location = results[0];
+                selectCity(location.latitude, location.longitude, location.name, location.country || '', location.admin1 || '');
+            } else {
+                showCitySelector(results);
+            }
+        } else {
+            document.getElementById('locationStatus').innerHTML = `
+                <div class="text-red-200 bg-red-500/20 p-3 sm:p-4 rounded-xl mt-2 text-xs sm:text-sm">
+                    ❌ No se encontró la ubicación "${city}". <br>
+                    Intenta con otra ciudad o verifica la ortografía.
+                </div>
+            `;
+        }
+    }
+}
