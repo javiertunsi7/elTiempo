@@ -79,3 +79,16 @@
     content: "Cargando datos meteorológicos...";
     opacity: 0.7;
 }
+.error-state {
+    background: linear-gradient(to right, #ef4444, #dc2626);
+    color: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+}
+
+.success-state {
+    background: linear-gradient(to right, #10b981, #059669);
+    color: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+}
