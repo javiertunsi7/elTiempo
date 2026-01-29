@@ -1,4 +1,4 @@
-/* ===== VARIABLES DE DISEÑO ===== */
+
 :root {
     --white-15: rgba(255, 255, 255, 0.15);
     --white-20: rgba(255, 255, 255, 0.20);
@@ -10,7 +10,7 @@
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* ===== TARJETA DE UBICACIÓN ===== */
+
 .location-card {
     background-color: var(--white-15);
     backdrop-filter: blur(12px);
@@ -22,7 +22,7 @@
     box-shadow: var(--shadow-md);
 }
 
-/* Animación de entrada */
+
 @keyframes slideDown {
     from {
         opacity: 0;
@@ -38,7 +38,7 @@
     animation: slideDown 0.5s ease-out;
 }
 
-/* ===== ENCABEZADO ===== */
+
 .location-header {
     display: flex;
     align-items: center;
@@ -66,7 +66,7 @@
     }
 }
 
-/* ===== BOTONES ===== */
+
 .location-buttons {
     display: flex;
     gap: 0.5rem;
@@ -106,7 +106,7 @@
     }
 }
 
-/* Efectos hover y active */
+
 .location-btn:hover {
     transform: scale(1.05);
     box-shadow: var(--shadow-lg);
@@ -116,7 +116,7 @@
     transform: scale(0.95);
 }
 
-/* ===== ESTADO DE UBICACIÓN ===== */
+
 .location-status {
     margin-top: 0.5rem;
     font-size: 0.75rem;
@@ -135,14 +135,14 @@
     }
 }
 
-/* ===== HISTORIAL DE BÚSQUEDA ===== */
+
 .search-history {
     margin-top: 1rem;
     padding-top: 1rem;
     border-top: 1px solid var(--white-20);
 }
 
-/* ===== CONTENIDO DEL CLIMA ===== */
+
 .weather-content {
     text-align: center;
     font-size: 1.125rem;
@@ -162,14 +162,13 @@
     }
 }
 
-/* ===== ESTADOS ADICIONALES ===== */
-/* Estado de carga */
+
 .weather-content:empty::before {
     content: "Cargando datos meteorológicos...";
     opacity: 0.7;
 }
 
-/* Estado de error */
+
 .error-state {
     background: linear-gradient(to right, #ef4444, #dc2626);
     color: white;
@@ -178,7 +177,7 @@
     margin-top: 1rem;
 }
 
-/* Estado exitoso */
+
 .success-state {
     background: linear-gradient(to right, #10b981, #059669);
     color: white;
@@ -187,7 +186,6 @@
     margin-top: 1rem;
 }
 
-/* Responsividad adicional */
 @media (max-width: 380px) {
     .location-btn {
         min-width: 120px;

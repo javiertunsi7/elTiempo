@@ -1,4 +1,4 @@
-/* Animations */
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -42,7 +42,7 @@
     animation: slideUp 1s ease-out;
 }
 
-/* Header Styles */
+
 .header-main {
     text-align: center;
     margin-bottom: 1.5rem;
@@ -69,7 +69,7 @@
     opacity: 0.9;
 }
 
-/* Responsive Header */
+
 @media (min-width: 640px) {
     .logo-header {
         width: 10rem;
