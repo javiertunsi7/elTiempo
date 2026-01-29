@@ -1,21 +1,118 @@
-/* Responsive improvements */
-@media (max-width: 640px) {
-    body {
-        padding: 0.75rem;
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { 
+        opacity: 0;
+        transform: translateY(-20px);
     }
-    
-    .container {
-        padding: 0;
+    to { 
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* Touch-friendly buttons on mobile */
-@media (hover: none) and (pointer: coarse) {
-    .locationBtn {
-        min-height: 48px;
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
     }
 }
+
+.animate-fadeIn {
+    animation: fadeIn 0.6s ease-in;
+}
+
+.animate-slideDown {
+    animation: slideDown 0.6s ease-out;
+}
+
+.animate-slideUp {
+    animation: slideUp 0.8s ease-out;
+}
+
+.animate-slideUpDelay {
+    animation: slideUp 1s ease-out;
+}
+
+/* Header Styles */
+.header-main {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    animation: fadeIn 0.6s ease-in;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
 .logo-header {
-    width: 20rem; /* 32 */
-    height: 8rem; /* 32 */
+    width: 8rem;
+    height: 8rem;
+    object-fit: contain;
+}
+
+.header-subtitle {
+    font-size: 0.875rem;
+    opacity: 0.9;
+}
+
+/* Responsive Header */
+@media (min-width: 640px) {
+    .logo-header {
+        width: 10rem;
+        height: 10rem;
+    }
+    
+    .header-subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .logo-header {
+        width: 12rem;
+        height: 12rem;
+    }
+    
+    .header-subtitle {
+        font-size: 1.125rem;
+    }
+}
+
+/* Custom scrollbar for search history */
+.historyScroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.historyScroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.historyScroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.historyScroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Firefox scrollbar */
+.historyScroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
 }

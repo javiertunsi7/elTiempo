@@ -10,9 +10,16 @@
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/html/footer.html">
     <link rel="stylesheet" href="/html/header.html">
+    
 </head>
 <body class="min-h-screen bg-gradient-to-br from-purple-500 via-purple-600 to-purple-800 p-4 text-white"></body>
-
+<div class="container max-w-6xl mx-auto w-full">       
+        <header class="header-main">
+            <div class="logo-container">
+                <img src="/images/elClimax.png" alt="El Climax Logo" class="logo-header">
+            </div>
+            <p class="header-subtitle">Pronóstico hiperlocal para hoy, próximas horas y los próximos días</p>
+        </header>
 <div id="locationCard" class="location-card">
     <div class="location-header">
         <h3 class="location-title">
@@ -36,7 +43,65 @@
 <div id="weatherContent" class="weather-content">
     Cargando datos meteorológicos...
 </div>
+     <footer class="footer-container">
+    
+    <div class="footer-top">
+        <div class="footer-icons-grid">
+            <div class="footer-icon-item">
+                <div class="footer-icon">🌡️</div>
+                <div class="footer-icon-label">Temperatura</div>
+            </div>
+            <div class="footer-icon-item">
+                <div class="footer-icon">💧</div>
+                <div class="footer-icon-label">Precipitación</div>
+            </div>
+            <div class="footer-icon-item">
+                <div class="footer-icon">💨</div>
+                <div class="footer-icon-label">Viento</div>
+            </div>
+            <div class="footer-icon-item">
+                <div class="footer-icon">☁️</div>
+                <div class="footer-icon-label">Nubosidad</div>
+            </div>
+        </div>
+    </div>
 
+   
+    <div class="footer-middle">
+        <div class="footer-data-source">
+            <p class="footer-data-title">📡 Fuente de Datos</p>
+            <p class="footer-data-text">Datos meteorológicos proporcionados por <span class="footer-highlight">Open-Meteo API</span></p>
+        </div>
+        <div class="footer-update-status">
+            <span class="footer-pulse-indicator"></span>
+            <span>Actualizado automáticamente cada 10 minutos</span>
+        </div>
+        <div class="footer-last-update">
+            Última actualización: <span id="lastUpdate">Cargando...</span>
+        </div>
+    </div>
+
+ 
+    <div class="footer-bottom">
+        <div class="footer-features">
+            <div class="footer-feature-item">
+                <span>🌍</span>
+                <span>Cobertura mundial</span>
+            </div>
+            <div class="footer-feature-item">
+                <span>⚡</span>
+                <span>Datos en tiempo real</span>
+            </div>
+            <div class="footer-feature-item">
+                <span>📊</span>
+                <span>Pronóstico 7 días</span>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            © 2025 El Climax - Aplicación del Tiempo
+        </div>
+    </div>
+</footer>
 
     <script src="/js/script.js"></script>
 </body>
