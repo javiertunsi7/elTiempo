@@ -1,13 +1,10 @@
-// Default coordinates (Orihuela, Valencia)
+
 let currentLat = 38.0883;
 let currentLon = -0.9439;
 
-// Array to save search history (maximum 5)
 let searchHistory = [];
 
-/**
- * Load search history from localStorage
- */
+
 function loadSearchHistory() {
     try {
         const savedHistory = localStorage.getItem('weatherSearchHistory');
@@ -21,9 +18,7 @@ function loadSearchHistory() {
     displaySearchHistory();
 }
 
-/**
- * Save search history to localStorage
- */
+
 function saveSearchHistory() {
     try {
         localStorage.setItem('weatherSearchHistory', JSON.stringify(searchHistory));
@@ -32,9 +27,7 @@ function saveSearchHistory() {
     }
 }
 
-/**
- * Add location to search history
- */
+
 function addToHistory(lat, lon, name, country, admin1) {
     const location = {
         lat: lat,
@@ -63,9 +56,7 @@ function addToHistory(lat, lon, name, country, admin1) {
     displaySearchHistory();
 }
 
-/**
- * Display search history in the UI
- */
+
 function displaySearchHistory() {
     const historyContainer = document.getElementById('searchHistory');
     
@@ -95,49 +86,41 @@ function displaySearchHistory() {
     historyContainer.innerHTML = html;
 }
 
-/**
- * Load location from search history
- */
+
 function loadFromHistory(lat, lon, name, country, admin1) {
     selectCity(lat, lon, name, country, admin1);
 }
 
-/**
- * Get weather icon based on WMO weather code
- */
 function getWeatherIcon(code, isDay = true) {
     const iconMap = {
-        0: '☀️',   // Clear sky
-        1: '🌤️',  // Mainly clear
-        2: '⛅',   // Partly cloudy
-        3: '☁️',   // Overcast
-        45: '🌫️', // Fog
-        48: '🌫️', // Depositing rime fog
-        51: '🌦️', // Light drizzle
-        53: '🌦️', // Moderate drizzle
-        55: '🌦️', // Dense drizzle
-        61: '🌧️', // Slight rain
-        63: '🌧️', // Moderate rain
-        65: '🌧️', // Heavy rain
-        71: '🌨️', // Slight snow
-        73: '🌨️', // Moderate snow
-        75: '🌨️', // Heavy snow
-        77: '❄️',  // Snow grains
-        80: '🌦️', // Slight rain showers
-        81: '⛈️', // Moderate rain showers
-        82: '⛈️', // Violent rain showers
-        85: '🌨️', // Slight snow showers
-        86: '🌨️', // Heavy snow showers
-        95: '⛈️', // Thunderstorm
-        96: '⛈️', // Thunderstorm with slight hail
-        99: '⛈️'  // Thunderstorm with heavy hail
+        0: '☀️',   
+        2: '⛅',   
+        3: '☁️',   
+        45: '🌫️', 
+        48: '🌫️', 
+        51: '🌦️', 
+        53: '🌦️', 
+        55: '🌦️', 
+        61: '🌧️', 
+        63: '🌧️', 
+        65: '🌧️', 
+        71: '🌨️', 
+        73: '🌨️', 
+        75: '🌨️', 
+        77: '❄️',  
+        80: '🌦️',
+        81: '⛈️', 
+        82: '⛈️', 
+        85: '🌨️', 
+        86: '🌨️',
+        95: '⛈️', 
+        96: '⛈️', 
+        99: '⛈️'  
     };
     return iconMap[code] || '🌡️';
 }
 
-/**
- * Get weather description based on WMO weather code
- */
+
 function getWeatherDescription(code) {
     const descriptions = {
         0: 'Despejado',
@@ -168,9 +151,7 @@ function getWeatherDescription(code) {
     return descriptions[code] || 'Desconocido';
 }
 
-/**
- * Search city coordinates using Open-Meteo geocoding API
- */
+
 async function searchCity(cityName) {
     const geocodingUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cityName)}&count=10&language=es&format=json`;
     
@@ -189,9 +170,7 @@ async function searchCity(cityName) {
     }
 }
 
-/**
- * Show city selector when multiple results are found
- */
+
 function showCitySelector(cities) {
     let html = '<div class="bg-white/20 p-4 sm:p-5 rounded-2xl mt-4">';
     html += '<p class="mb-4 font-bold text-sm sm:text-base">Se encontraron varias ubicaciones. Selecciona una:</p>';
@@ -217,9 +196,7 @@ function showCitySelector(cities) {
     document.getElementById('locationStatus').innerHTML = html;
 }
 
-/**
- * Select a specific city and fetch its weather data
- */
+
 function selectCity(lat, lon, name, country, admin1) {
     currentLat = lat;
     currentLon = lon;
@@ -232,9 +209,7 @@ function selectCity(lat, lon, name, country, admin1) {
     fetchWeatherData(currentLat, currentLon);
 }
 
-/**
- * Fetch weather data from Open-Meteo API
- */
+
 async function fetchWeatherData(lat, lon) {
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&hourly=temperature_2m,precipitation_probability,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max&timezone=auto`;
     
@@ -253,9 +228,7 @@ async function fetchWeatherData(lat, lon) {
     }
 }
 
-/**
- * Display weather data in the user interface
- */
+
 function displayWeather(data) {
     const current = data.current;
     const hourly = data.hourly;
@@ -379,9 +352,7 @@ function getLocation() {
     }
 }
 
-/**
- * Allow user to manually enter a location
- */
+
 async function useManualLocation() {
     const city = prompt('Introduce el nombre de la ciudad, pueblo o provincia:\n\nEjemplos:\n- Madrid\n- Barcelona\n- Nueva York\n- París\n- Tokio');
     
@@ -414,12 +385,12 @@ async function useManualLocation() {
     }
 }
 
-// Initialize application
+
 document.getElementById('locationName').textContent = 'Orihuela, Valencia, España';
 loadSearchHistory();
 fetchWeatherData(currentLat, currentLon);
 
-// Auto-update weather data every 10 minutes
+
 setInterval(() => {
     fetchWeatherData(currentLat, currentLon);
 }, 600000);
