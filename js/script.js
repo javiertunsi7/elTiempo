@@ -320,9 +320,7 @@ function displayWeather(data) {
     document.getElementById('weatherContent').innerHTML = html;
 }
 
-/**
- * Get user's current location using the Geolocation API
- */
+
 function getLocation() {
     if (navigator.geolocation) {
         document.getElementById('locationStatus').textContent = 'Obteniendo ubicación...';
